@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::resource('todos', 'TodosController');
+
 Route::group([
 
     'middleware' => 'api',
