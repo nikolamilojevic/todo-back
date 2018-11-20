@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Todo;
+use App\Http\Requests\TodosFormRequest;
 
 class TodosController extends Controller
 {
@@ -11,7 +12,7 @@ class TodosController extends Controller
         return Todo::all();
     }
 
-    public function store(Request $request)
+    public function store(TodosFormRequest $request)
     {
         Todo::create([
             'description' => $request->description,
