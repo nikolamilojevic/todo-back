@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::resource('todos', 'TodosController');
+Route::get('authors/{id}', 'TodosController@getAuthor');
 
 Route::group([
 

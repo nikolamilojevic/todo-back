@@ -18,6 +18,11 @@ class CreateTodosTable extends Migration
             $table->text('description');
             $table->integer('priority');
             $table->string('status');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

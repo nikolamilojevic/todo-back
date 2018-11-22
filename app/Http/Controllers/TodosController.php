@@ -12,18 +12,25 @@ class TodosController extends Controller
         return Todo::all();
     }
 
+    public function getAuthor($user_id, Request $request) {
+        return Todo::with('user')
+        ->where('user_id', $user_id)->get();
+    }
+
     public function store(TodosFormRequest $request)
     {
         Todo::create([
             'description' => $request->description,
             'status' => $request->status,
-            'priority' => $request->priority
+            'priority' => $request->priority,
+            'user_id' => $request->user_id
         ]);
     }
 
     public function destroy($todo)
     {
-        return Todo::destroy($todo);
+        $todoToDelete = Todo::findOrFail($todo);
+        return Todo::destroy($todoToDelete->id);
     }
 
     public function update(Request $request, $todo)
